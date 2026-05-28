@@ -54,7 +54,7 @@ function Nav() {
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </div>
         <Button variant="outline" className="hidden md:flex border-primary/20 hover:border-primary/50 text-primary hover:bg-primary/10 transition-all">
-          Resume
+          السيرة الذاتية
         </Button>
       </div>
     </motion.nav>
@@ -82,7 +82,7 @@ function Hero() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-6"
       >
-        Abdo Taiby
+        Abdou Taiby
         <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/50">
           Web Developer.
@@ -105,7 +105,7 @@ function Hero() {
         className="flex flex-col sm:flex-row gap-4"
       >
         <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 font-semibold">
-          See my work <ArrowRight size={18} />
+          أعمالي <ArrowRight size={18} />
         </Button>
         <Button size="lg" variant="outline" className="gap-2 border-border hover:bg-white/5">
           <Github size={18} /> GitHub
@@ -318,7 +318,7 @@ function Contact() {
 function Footer() {
   return (
     <footer className="py-8 text-center text-muted-foreground text-sm border-t border-border/50">
-      <p>Designed & Built by Abdo Taiby</p>
+      <p>Designed & Built by Abdou Taiby</p>
       <p className="mt-2 font-mono text-xs opacity-50">© {new Date().getFullYear()} All Rights Reserved</p>
     </footer>
   );
