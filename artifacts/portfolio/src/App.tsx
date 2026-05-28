@@ -82,10 +82,10 @@ function Hero() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-6"
       >
-        Alex Morgan
+        Abdo Taiby
         <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/50">
-          Creative Developer.
+          Web Developer.
         </span>
       </motion.h1>
 
@@ -318,7 +318,7 @@ function Contact() {
 function Footer() {
   return (
     <footer className="py-8 text-center text-muted-foreground text-sm border-t border-border/50">
-      <p>Designed & Built by Alex Morgan</p>
+      <p>Designed & Built by Abdo Taiby</p>
       <p className="mt-2 font-mono text-xs opacity-50">© {new Date().getFullYear()} All Rights Reserved</p>
     </footer>
   );
