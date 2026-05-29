@@ -1,3 +1,22 @@
+import salon1 from "@assets/IMG_20260529_004438_904_1780021117998.jpg";
+import salon2 from "@assets/IMG_20260529_004438_345_1780021117998.jpg";
+import salon3 from "@assets/IMG_20260529_031758_082_1780021117988.jpg";
+import salon4 from "@assets/gemini-2.5-flash-image_Luxury_furniture_showroom_professional__1780021117990.jpg";
+
+import table1 from "@assets/IMG_20260529_031757_900_1780021117989.jpg";
+import table2 from "@assets/IMG_20260529_031757_993_1780021117989.jpg";
+import table3 from "@assets/IMG_20260529_031758_326_1780021117988.jpg";
+import table4 from "@assets/IMG_20260529_031758_395_1780021117986.jpg";
+import table5 from "@assets/IMG_20260529_031758_280_1780021117988.jpg";
+
+import bed1 from "@assets/IMG_20260529_031758_370_1780021117987.jpg";
+import bed2 from "@assets/IMG_20260529_031758_562_1780021117986.jpg";
+import bed3 from "@assets/IMG_20260529_031758_664_1780021117986.jpg";
+import bed4 from "@assets/IMG_20260529_031758_810_1780021117985.jpg";
+
+const px = (id: string, w = 700) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+
 export const translations = {
   "nav.home": { ar: "الرئيسية", fr: "Accueil" },
   "nav.gallery": { ar: "المجموعة", fr: "Collection" },
@@ -56,51 +75,41 @@ export interface Product {
   variants: Variant[];
 }
 
-const px = (id: string, w = 700) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
-
 export const products: Product[] = [
   {
     id: 1,
     name: { ar: "الصالونات", fr: "Salons" },
     desc: { ar: "مجموعة متنوعة من الصالونات الفاخرة", fr: "Collection de salons de luxe" },
     price: "65,000",
-    image: px("1571460"),
+    image: salon1,
     variants: [
       {
         id: 11,
-        name: { ar: "صالون كلاسيك إيلغانس", fr: "Salon Classic Élégance" },
-        desc: { ar: "أريكة من المخمل الداكن مع أرجل من البرونز الذهبي، 7 مقاعد", fr: "Canapé en velours sombre + pieds bronze doré, 7 places" },
+        name: { ar: "صالون كريمي كلاسيك", fr: "Salon Crème Classique" },
+        desc: { ar: "طقم كامل من القماش الكريمي مع وسائد برتقالية وطاولة خشبية", fr: "Ensemble tissu crème avec coussins orangés et table en bois" },
         price: "85,000",
-        image: px("1571460"),
+        image: salon1,
       },
       {
         id: 12,
-        name: { ar: "صالون أوريانتال رويال", fr: "Salon Oriental Royal" },
-        desc: { ar: "طراز شرقي أصيل بنقوشات ذهبية وأقمشة فاخرة", fr: "Style oriental authentique avec motifs dorés et tissus luxueux" },
-        price: "95,000",
-        image: px("276583"),
+        name: { ar: "صالون رمادي مودرن", fr: "Salon Gris Moderne" },
+        desc: { ar: "طقم رمادي عصري مع طاولات بيضاوية داكنة وتصميم منظم", fr: "Salon gris contemporain avec tables ovales sombres" },
+        price: "72,000",
+        image: salon2,
       },
       {
         id: 13,
-        name: { ar: "صالون مودرن لوكس", fr: "Salon Modern Luxe" },
-        desc: { ar: "تصميم عصري أنيق بألوان محايدة وخطوط نظيفة", fr: "Design contemporain élégant en tons neutres et lignes épurées" },
-        price: "75,000",
-        image: px("1457842"),
+        name: { ar: "صالون L-شكل بيج", fr: "Salon L-Shape Beige" },
+        desc: { ar: "صالون بيج فاخر على شكل L مع وسائد كبيرة مريحة", fr: "Canapé L-shape beige luxueux avec grands coussins confortables" },
+        price: "78,000",
+        image: salon3,
       },
       {
         id: 14,
-        name: { ar: "صالون إمبريال", fr: "Salon Impérial" },
-        desc: { ar: "إلهام من القصور الملكية، مخمل أزرق داكن وتفاصيل ذهبية", fr: "Inspiré des palais royaux, velours bleu nuit et détails dorés" },
-        price: "120,000",
-        image: px("2079249"),
-      },
-      {
-        id: 15,
-        name: { ar: "صالون نيو كلاسيك", fr: "Salon Néo-Classique" },
-        desc: { ar: "مزيج بين الكلاسيكية والحداثة بجلد طبيعي فاتح", fr: "Mélange classique-moderne en cuir naturel clair" },
-        price: "68,000",
-        image: px("1866149"),
+        name: { ar: "صالون معرض الدار", fr: "Salon Showroom Royal" },
+        desc: { ar: "صالون الدار الفاخر كما يبدو في معرضنا بالقليعة", fr: "Salon Royal tel qu'exposé dans notre showroom à El Qlea" },
+        price: "95,000",
+        image: salon4,
       },
     ],
   },
@@ -108,36 +117,43 @@ export const products: Product[] = [
     id: 2,
     name: { ar: "طاولات الطعام", fr: "Tables à Manger" },
     desc: { ar: "طاولات طعام فاخرة لكل المقاسات", fr: "Tables à manger luxueuses pour toutes les tailles" },
-    price: "45,000",
-    image: px("1080721"),
+    price: "38,000",
+    image: table1,
     variants: [
       {
         id: 21,
-        name: { ar: "طاولة نوفا مستطيلة", fr: "Table Nova Rectangulaire" },
-        desc: { ar: "خشب الجوز الداكن مع حافة ذهبية، 6 أشخاص", fr: "Noyer foncé + bordure dorée, 6 personnes" },
-        price: "45,000",
-        image: px("1080721"),
+        name: { ar: "طاولة مستطيلة كلاسيك", fr: "Table Rectangulaire Classique" },
+        desc: { ar: "خشب بني داكن مع كراسي مبطنة بالقماش، تتسع لـ 6 أشخاص", fr: "Bois brun foncé + chaises rembourrées en tissu, 6 personnes" },
+        price: "38,000",
+        image: table1,
       },
       {
         id: 22,
-        name: { ar: "طاولة بيضاوية رويال", fr: "Table Ovale Royal" },
-        desc: { ar: "شكل بيضاوي أنيق من المرمر الأبيض وأرجل ذهبية، 8 أشخاص", fr: "Forme ovale en marbre blanc + pieds dorés, 8 personnes" },
-        price: "65,000",
-        image: px("1350789"),
+        name: { ar: "طاولة بيضاوية إيلغانس", fr: "Table Ovale Élégance" },
+        desc: { ar: "طاولة بيضاوية لامعة مع كراسي عصرية ذات أرجل خشبية، 6 أشخاص", fr: "Table ovale brillante + chaises modernes pieds bois, 6 personnes" },
+        price: "45,000",
+        image: table2,
       },
       {
         id: 23,
-        name: { ar: "طاولة مستديرة سلطانية", fr: "Table Ronde Sultane" },
-        desc: { ar: "طاولة مستديرة من الخشب المحفور، 4 أشخاص", fr: "Table ronde en bois sculpté, 4 personnes" },
-        price: "38,000",
-        image: px("3201921"),
+        name: { ar: "طاولة دائرية بيضاء", fr: "Table Ronde Blanche" },
+        desc: { ar: "طاولة دائرية بيضاء مع دوّار مركزي وكراسي مخملية، 4 أشخاص", fr: "Table ronde blanche avec plateau tournant + chaises velours, 4 personnes" },
+        price: "32,000",
+        image: table3,
       },
       {
         id: 24,
-        name: { ar: "طاولة جراند إمبريال", fr: "Table Grand Impérial" },
-        desc: { ar: "طاولة كبيرة للمناسبات، 12 شخص، خشب ماهوجاني", fr: "Grande table de cérémonie 12 personnes, bois mahogany" },
-        price: "95,000",
-        image: px("1457842"),
+        name: { ar: "طاولة دائرية كبيرة", fr: "Grande Table Ronde" },
+        desc: { ar: "طاولة دائرية ضخمة من خشب الجوز تتسع لـ 12 شخص، مثالية للمناسبات", fr: "Grande table ronde en noyer pour 12 personnes, idéale pour les fêtes" },
+        price: "75,000",
+        image: table4,
+      },
+      {
+        id: 25,
+        name: { ar: "طاولة مستطيلة رويال", fr: "Table Rectangulaire Royal" },
+        desc: { ar: "طاولة بلاط زجاجي مع كراسي مدورة الظهر، أناقة راقية، 6 أشخاص", fr: "Plateau verre + chaises dossier arrondi, raffinement rare, 6 personnes" },
+        price: "42,000",
+        image: table5,
       },
     ],
   },
@@ -213,35 +229,35 @@ export const products: Product[] = [
     name: { ar: "غرف النوم", fr: "Chambres à Coucher" },
     desc: { ar: "غرف نوم فاخرة لراحة ملكية", fr: "Chambres à coucher luxueuses pour un repos royal" },
     price: "120,000",
-    image: px("1743229"),
+    image: bed1,
     variants: [
       {
         id: 51,
-        name: { ar: "غرفة نوم أميرة", fr: "Chambre Princesse" },
-        desc: { ar: "طقم كامل مع لوح رأس مبطن + خزانة + 2 طاولات سرير", fr: "Ensemble complet tête de lit capitonnée + armoire + 2 chevets" },
+        name: { ar: "غرفة EVANA — أبيض كريمي", fr: "Chambre EVANA — Blanc Crème" },
+        desc: { ar: "طقم كامل أبيض فاخر مع لوح رأس مبطن بالقماش وخزانة مرايا ذهبية", fr: "Ensemble blanc luxueux, tête de lit en tissu capitonné + armoire miroirs dorés" },
         price: "120,000",
-        image: px("1743229"),
+        image: bed1,
       },
       {
         id: 52,
-        name: { ar: "غرفة السلطان الذهبية", fr: "Chambre Sultan Dorée" },
-        desc: { ar: "أثاث ذهبي اللون مع نقوشات ملكية وإضاءة دافئة", fr: "Mobilier doré avec gravures royales et éclairage chaleureux" },
-        price: "185,000",
-        image: px("271624"),
+        name: { ar: "غرفة أسود لاكيه مع إضاءة", fr: "Chambre Noir Laqué avec LED" },
+        desc: { ar: "غرفة أسود لامع مع مرآة تبرج بإضاءة LED زرقاء وإكسسوارات ذهبية", fr: "Chambre noir brillant + miroir coiffeuse LED bleu + accessoires dorés" },
+        price: "145,000",
+        image: bed2,
       },
       {
         id: 53,
-        name: { ar: "غرفة مودرن إيلغانس", fr: "Chambre Modern Élégance" },
-        desc: { ar: "تصميم عصري بألوان رمادية داكنة وتفاصيل ذهبية خفية", fr: "Design moderne gris foncé avec détails dorés subtils" },
-        price: "145,000",
-        image: px("164595"),
+        name: { ar: "معرض غرف النوم — اختر طرازك", fr: "Showroom Chambres — Choisissez votre style" },
+        desc: { ar: "تشكيلة واسعة من غرف النوم الأسود والأبيض في معرضنا بالقليعة", fr: "Large choix de chambres noires et blanches dans notre showroom à El Qlea" },
+        price: "95,000",
+        image: bed3,
       },
       {
         id: 54,
-        name: { ar: "غرفة رويال كلاسيك", fr: "Chambre Royal Classic" },
-        desc: { ar: "خشب الجوز الداكن مع أقمشة قطيفة رائعة", fr: "Noyer foncé avec tissus veloutés somptueux" },
-        price: "160,000",
-        image: px("1457842"),
+        name: { ar: "غرفة CLARA PLUS — أبيض ذهبي", fr: "Chambre CLARA PLUS — Blanc Doré" },
+        desc: { ar: "طقم أبيض بتفاصيل ذهبية أنيقة، خزانة بمرايا سوداء وإضاءة ذهبية", fr: "Ensemble blanc aux détails dorés élégants + armoire miroirs noirs et éclairage doré" },
+        price: "135,000",
+        image: bed4,
       },
     ],
   },
@@ -275,8 +291,8 @@ export const products: Product[] = [
       },
       {
         id: 64,
-        name: { ar: "مرآة رسم الوجه", fr: "Miroir de Coiffeuse" },
-        desc: { ar: "مرآة تبرج مع إضاءة LED ذهبية وطاولة خشبية", fr: "Miroir de maquillage avec éclairage LED doré et table en bois" },
+        name: { ar: "مرآة تبرج LED", fr: "Miroir Coiffeuse LED" },
+        desc: { ar: "مرآة تبرج مع إضاءة LED ذهبية وطاولة خشبية فاخرة", fr: "Miroir de maquillage avec éclairage LED doré et table en bois" },
         price: "32,000",
         image: px("2079249"),
       },
