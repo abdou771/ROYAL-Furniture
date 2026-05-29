@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import { LanguageProvider } from "@/hooks/use-language";
-import { GoldenCursor } from "@/components/GoldenCursor";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -32,7 +31,6 @@ function App() {
       <LanguageProvider>
         <TooltipProvider>
           <ForceDark />
-          <GoldenCursor />
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Router />
           </WouterRouter>
