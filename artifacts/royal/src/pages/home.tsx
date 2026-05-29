@@ -271,7 +271,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-foreground/50 text-sm uppercase tracking-widest mb-1">{t("contact.phone")}</h4>
                   <p className="text-xl text-foreground font-serif" dir="ltr">
-                    +213 600 000 000
+                    +213 549 032 671
                   </p>
                 </div>
               </div>
