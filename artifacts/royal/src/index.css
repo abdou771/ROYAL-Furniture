@@ -205,6 +205,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }
@@ -212,6 +216,8 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     cursor: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   a, button, [role="button"] {
@@ -220,6 +226,10 @@
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+
+  img {
+    will-change: transform;
   }
 }
 

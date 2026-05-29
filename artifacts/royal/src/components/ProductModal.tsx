@@ -46,10 +46,10 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
           {/* Panel */}
           <motion.div
             key="panel"
-            initial={{ opacity: 0, y: 60, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.97 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ type: "spring", stiffness: 220, damping: 26, mass: 0.9 }}
             className="fixed inset-x-0 bottom-0 top-[4rem] z-[1001] flex flex-col bg-background rounded-t-3xl overflow-hidden border-t border-primary/20 shadow-[0_-8px_60px_rgba(212,175,55,0.12)]"
             style={{ maxHeight: "calc(100dvh - 4rem)" }}
           >
