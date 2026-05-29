@@ -1,6 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
 import { translations, products } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp } from "react-icons/si";
 import { MapPin, Phone, Star, Shield, Users, Armchair } from "lucide-react";
@@ -11,7 +11,7 @@ export default function Home() {
 
   const t = (key: keyof typeof translations) => translations[key][lang];
 
-  const whatsappNumber = "213600000000";
+  const whatsappNumber = "213549032671";
 
   const handleWhatsApp = (text: string) => {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
@@ -65,9 +65,21 @@ export default function Home() {
           {/* Right: lang toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 uppercase tracking-wider text-sm font-semibold backdrop-blur-sm"
+            className="relative flex items-center gap-2 px-5 py-2 rounded-lg border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/60 hover:shadow-[0_0_12px_rgba(212,175,55,0.2)] transition-all duration-300 uppercase tracking-wider text-sm font-semibold backdrop-blur-sm overflow-hidden w-16 justify-center"
           >
-            {lang === "ar" ? "FR" : "AR"}
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={lang}
+                initial={{ y: 12, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -12, opacity: 0 }}
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="absolute"
+              >
+                {lang === "ar" ? "FR" : "AR"}
+              </motion.span>
+            </AnimatePresence>
+            <span className="invisible">{lang === "ar" ? "FR" : "AR"}</span>
           </button>
         </div>
       </nav>

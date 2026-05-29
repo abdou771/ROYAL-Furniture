@@ -1,9 +1,9 @@
-import salonImg from "@/assets/images/salon.png";
-import tableImg from "@/assets/images/table.png";
-import fauteuilImg from "@/assets/images/fauteuil.png";
-import enfantImg from "@/assets/images/enfant.png";
-import princesseImg from "@/assets/images/princesse.png";
-import miroirImg from "@/assets/images/miroir.png";
+const salonImg = "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=700";
+const tableImg = "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=700";
+const fauteuilImg = "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=700";
+const enfantImg = "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=700";
+const princesseImg = "https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=700";
+const miroirImg = "https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg?auto=compress&cs=tinysrgb&w=700";
 
 export const translations = {
   "nav.home": { ar: "الرئيسية", fr: "Accueil" },
@@ -28,7 +28,7 @@ export const translations = {
   "contact.address": { ar: "العنوان", fr: "Adresse" },
   "contact.address.val": { ar: "الجزائر العاصمة، الجزائر", fr: "Alger, Algérie" },
   "footer.rights": { ar: "جميع الحقوق محفوظة للبيت الملكي.", fr: "Tous droits réservés à Royal Home." },
-  "product.price": { ar: "درهم", fr: "MAD" },
+  "product.price": { ar: "د.ج", fr: "DZD" },
   "product.inquiry": { ar: "استفسار عن هذا المنتج", fr: "Se renseigner sur ce produit" },
   "whyus.title": { ar: "لماذا تختارنا؟", fr: "Pourquoi Nous Choisir ?" },
   "whyus.quality.title": { ar: "الجودة", fr: "Qualité" },
