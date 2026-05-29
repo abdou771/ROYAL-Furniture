@@ -26,10 +26,19 @@ export const translations = {
   "contact.whatsapp": { ar: "تواصل معنا عبر واتساب", fr: "Contactez-nous sur WhatsApp" },
   "contact.phone": { ar: "الهاتف", fr: "Téléphone" },
   "contact.address": { ar: "العنوان", fr: "Adresse" },
-  "contact.address.val": { ar: "الدار البيضاء، المغرب", fr: "Casablanca, Maroc" },
+  "contact.address.val": { ar: "الجزائر العاصمة، الجزائر", fr: "Alger, Algérie" },
   "footer.rights": { ar: "جميع الحقوق محفوظة للبيت الملكي.", fr: "Tous droits réservés à Royal Home." },
   "product.price": { ar: "درهم", fr: "MAD" },
   "product.inquiry": { ar: "استفسار عن هذا المنتج", fr: "Se renseigner sur ce produit" },
+  "whyus.title": { ar: "لماذا تختارنا؟", fr: "Pourquoi Nous Choisir ?" },
+  "whyus.quality.title": { ar: "الجودة", fr: "Qualité" },
+  "whyus.quality.desc": { ar: "مواد فاخرة وتصنيع متقن يدوم لأجيال قادمة", fr: "Matériaux de luxe et fabrication soignée qui durent des générations" },
+  "whyus.comfort.title": { ar: "الراحة", fr: "Confort" },
+  "whyus.comfort.desc": { ar: "تصاميم عصرية تجمع بين الجمال الأصيل والراحة المثالية", fr: "Designs modernes alliant esthétique authentique et confort idéal" },
+  "whyus.warranty.title": { ar: "الضمان", fr: "Garantie" },
+  "whyus.warranty.desc": { ar: "ضمان شامل على جميع منتجاتنا لراحة بالك التامة", fr: "Garantie complète sur tous nos produits pour votre tranquillité d'esprit" },
+  "whyus.trust.title": { ar: "الثقة", fr: "Confiance" },
+  "whyus.trust.desc": { ar: "آلاف العملاء الراضين يثقون بنا في الجزائر", fr: "Des milliers de clients satisfaits nous font confiance en Algérie" },
 };
 
 export const products = [
