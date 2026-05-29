@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { useLanguage } from "@/hooks/use-language";
-import { translations, products } from "@/lib/data";
+import { translations, products, Product } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp } from "react-icons/si";
-import { MapPin, Phone, Star, Shield, Users, Armchair } from "lucide-react";
+import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight } from "lucide-react";
 import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
+import { ProductModal } from "@/components/ProductModal";
 
 export default function Home() {
   const { lang, toggleLang } = useLanguage();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const t = (key: keyof typeof translations) => translations[key][lang];
 
@@ -42,6 +45,13 @@ export default function Home() {
 
   return (
     <div className="min-h-[100dvh] w-full bg-background text-foreground font-sans overflow-x-hidden">
+
+      {/* Product Detail Modal */}
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onWhatsApp={handleWhatsApp}
+      />
 
       {/* Sticky Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/75 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-black/20">
@@ -150,40 +160,40 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group flex flex-col bg-card/80 backdrop-blur-sm border border-primary/15 hover:border-primary/50 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.15)] transition-all duration-500"
+                onClick={() => setSelectedProduct(product)}
+                className="group flex flex-col bg-card/80 backdrop-blur-sm border border-primary/15 hover:border-primary/50 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.15)] transition-all duration-500 cursor-pointer"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-muted rounded-t-2xl">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent z-10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 z-10 transition-colors duration-500" />
                   <img
                     src={product.image}
                     alt={product.name[lang]}
-                    className="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out"
-                    style={{ transform: "scale(1)", transition: "transform 700ms ease-out" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.08)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
+                  {/* Variants count badge */}
+                  <div className="absolute top-3 start-3 z-20 bg-black/65 backdrop-blur-sm border border-primary/35 text-primary text-xs font-semibold px-3 py-1.5 rounded-full">
+                    {product.variants.length} {lang === "ar" ? "أنواع" : "modèles"}
+                  </div>
                 </div>
 
                 <div className="p-8 flex flex-col flex-grow">
                   <h3 className="text-2xl font-serif text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {product.name[lang]}
                   </h3>
-                  <p className="text-foreground/55 mb-8 flex-grow font-light leading-relaxed">
+                  <p className="text-foreground/55 mb-6 flex-grow font-light leading-relaxed">
                     {product.desc[lang]}
                   </p>
 
                   <div className="flex items-center justify-between mt-auto pt-6 border-t border-primary/15">
-                    <span className="text-xl text-primary font-medium tracking-wider">
-                      {product.price} {t("product.price")}
+                    <span className="text-sm text-foreground/40 uppercase tracking-widest">
+                      {lang === "ar" ? "يبدأ من" : "à partir de"}
                     </span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleWhatsApp(`${t("product.inquiry")}: ${product.name[lang]}`)}
-                      className="text-foreground/50 hover:text-[#25D366] hover:bg-[#25D366]/10 rounded-full h-12 w-12 transition-all duration-300"
+                    <button
+                      className="flex items-center gap-2 text-primary text-sm font-semibold uppercase tracking-widest group-hover:gap-3 transition-all duration-300"
                     >
-                      <SiWhatsapp className="w-6 h-6" />
-                    </Button>
+                      {t("product.view")}
+                      <ChevronRight className="w-4 h-4 rtl:rotate-180" />
+                    </button>
                   </div>
                 </div>
               </motion.div>
