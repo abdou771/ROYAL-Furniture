@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ShoppingBag } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Product, translations } from "@/lib/data";
@@ -10,9 +10,10 @@ interface Props {
   product: Product | null;
   onClose: () => void;
   onWhatsApp: (text: string) => void;
+  onOrder: (variantName: string) => void;
 }
 
-export function ProductModal({ product, onClose, onWhatsApp }: Props) {
+export function ProductModal({ product, onClose, onWhatsApp, onOrder }: Props) {
   const { lang } = useLanguage();
   const t = (key: keyof typeof translations) => translations[key][lang];
 
@@ -28,11 +29,12 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
     };
   }, [product, onClose]);
 
+  const orderLabel = lang === "ar" ? "اطلب الآن" : "Commander";
+
   return (
     <AnimatePresence>
       {product && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
@@ -43,7 +45,6 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
             onClick={onClose}
           />
 
-          {/* Panel */}
           <motion.div
             key="panel"
             initial={{ opacity: 0, y: 80 }}
@@ -90,7 +91,6 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
                         alt={v.name[lang]}
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       />
-                      {/* Price badge */}
                       <div className="absolute top-3 end-3 z-20 bg-black/70 backdrop-blur-sm border border-primary/40 text-primary text-xs font-semibold px-2.5 py-1 rounded-full">
                         {v.price} {t("product.price")}
                       </div>
@@ -104,14 +104,25 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
                       <p className="text-foreground/55 text-xs font-light leading-relaxed flex-grow mb-4">
                         {v.desc[lang]}
                       </p>
-                      <Button
-                        onClick={() => onWhatsApp(`${t("modal.inquire")}: ${v.name[lang]} — ${product.name[lang]}`)}
-                        className="w-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 hover:border-[#25D366] rounded-xl gap-2 text-sm transition-all duration-300"
-                        variant="ghost"
-                      >
-                        <SiWhatsapp className="w-4 h-4" />
-                        {t("modal.inquire")}
-                      </Button>
+
+                      {/* Two action buttons */}
+                      <div className="flex flex-col gap-2">
+                        <Button
+                          onClick={() => onOrder(v.name[lang])}
+                          className="w-full bg-primary hover:bg-primary/90 text-black font-semibold rounded-xl gap-2 text-sm transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]"
+                        >
+                          <ShoppingBag className="w-4 h-4" />
+                          {orderLabel}
+                        </Button>
+                        <Button
+                          onClick={() => onWhatsApp(`${t("modal.inquire")}: ${v.name[lang]} — ${product.name[lang]}`)}
+                          className="w-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 hover:border-[#25D366] rounded-xl gap-2 text-xs transition-all duration-300"
+                          variant="ghost"
+                        >
+                          <SiWhatsapp className="w-3.5 h-3.5" />
+                          {t("modal.inquire")}
+                        </Button>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

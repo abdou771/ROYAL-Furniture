@@ -4,9 +4,10 @@ import { translations, products, Product } from "@/lib/data";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp } from "react-icons/si";
-import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight } from "lucide-react";
+import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight, ShoppingBag } from "lucide-react";
 import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
 import { ProductModal } from "@/components/ProductModal";
+import { OrderForm } from "@/components/OrderForm";
 import { useRef } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -14,6 +15,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export default function Home() {
   const { lang, toggleLang } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [orderProduct, setOrderProduct] = useState("");
 
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
@@ -37,7 +39,17 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] w-full bg-background text-foreground font-sans overflow-x-hidden">
 
-      <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} onWhatsApp={handleWhatsApp} />
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onWhatsApp={handleWhatsApp}
+        onOrder={(variantName) => { setSelectedProduct(null); setOrderProduct(variantName); }}
+      />
+      <OrderForm
+        open={!!orderProduct}
+        onClose={() => setOrderProduct("")}
+        defaultProduct={orderProduct}
+      />
 
       {/* Sticky Nav — fades in backdrop on scroll */}
       <motion.nav
@@ -218,14 +230,18 @@ export default function Home() {
                     {product.desc[lang]}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-primary/15">
-                    <span className="text-sm text-foreground/40 uppercase tracking-widest">
-                      {lang === "ar" ? "يبدأ من" : "à partir de"}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-primary text-sm font-semibold uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
+                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-primary/15">
+                    <span className="flex items-center gap-1.5 text-primary/70 text-xs font-semibold uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
                       {t("product.view")}
-                      <ChevronRight className="w-4 h-4 rtl:rotate-180" />
+                      <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
                     </span>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setOrderProduct(product.name[lang]); }}
+                      className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-black text-xs font-bold px-4 py-2 rounded-xl shadow-[0_0_14px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] transition-all duration-300 uppercase tracking-wider"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      {lang === "ar" ? "اطلب الآن" : "Commander"}
+                    </button>
                   </div>
                 </div>
               </motion.div>
