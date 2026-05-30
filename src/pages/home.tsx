@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "fra
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp } from "react-icons/si";
 import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight, ShoppingBag } from "lucide-react";
-import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
+import logoPath from "/IMG_20260529_004439_015_1780015083267.jpg";
 import { ProductModal } from "@/components/ProductModal";
 import { useRef } from "react";
 
