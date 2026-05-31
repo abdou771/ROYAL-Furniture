@@ -10,12 +10,7 @@ import { ProductModal } from "@/components/ProductModal";
 import { useRef } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const GOOGLE_FORM_BASE = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=pp_url";
-const PRODUCT_ENTRY = "entry.1470641425";
-const getOrderUrl = (productName: string) => {
-  return ${GOOGLE_FORM_BASE}&${PRODUCT_ENTRY}=${encodeURIComponent(productName)};
-};
-const openOrderForm = (productName: string) => window.open(getOrderUrl(productName), "_blank");
+
 export default function Home() {
   const { lang, toggleLang } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -27,9 +22,14 @@ export default function Home() {
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const navBg = useTransform(scrollY, [0, 80], ["rgba(0,0,0,0)", "rgba(0,0,0,0.35)"]);
 
+  const t = (key: keyof typeof translations) => translations[key][lang];
+  const whatsappNumber = "213541465201";
+  const handleWhatsApp = (text: string) =>
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 
-
-
+  const GOOGLE_FORM_URL = "https://forms.gle/XXXXXXXX";
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=dialog";
+  const openOrderForm = () => window.open(GOOGLE_FORM_URL, "_blank");
 
   const whyUs = [
     { icon: <Star className="w-7 h-7" />, title: t("whyus.quality.title"), desc: t("whyus.quality.desc") },
