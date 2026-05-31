@@ -45,7 +45,7 @@ export default function Home() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onWhatsApp={handleWhatsApp}
-        onOrder={() => { setSelectedProduct(null); openOrderForm(selectedProduct?.name || ""); }}
+        onOrder={() => { setSelectedProduct(null); openOrderForm(); }}
       />
 
       {/* Sticky Nav — fades in backdrop on scroll */}
