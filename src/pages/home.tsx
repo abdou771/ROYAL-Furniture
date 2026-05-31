@@ -27,8 +27,13 @@ export default function Home() {
   const handleWhatsApp = (text: string) =>
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=dialog";
-  const openOrderForm = () => window.open(GOOGLE_FORM_URL, "_blank");
+ const GOOGLE_FORM_BASE = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=pp_url";
+const PRODUCT_ENTRY = "entry.1470641425";
+const getOrderUrl = (productName: string) => {
+  return ${GOOGLE_FORM_BASE}&${PRODUCT_ENTRY}=${encodeURIComponent(productName)};
+};
+const openOrderForm = (productName: string) => window.open(getOrderUrl(productName), "_blank");
+
 
   const whyUs = [
     { icon: <Star className="w-7 h-7" />, title: t("whyus.quality.title"), desc: t("whyus.quality.desc") },
@@ -44,7 +49,7 @@ export default function Home() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onWhatsApp={handleWhatsApp}
-        onOrder={() => { setSelectedProduct(null); openOrderForm(); }}
+        onOrder={() => { setSelectedProduct(null); openOrderForm(selectedProduct?.name || ""); }}
       />
 
       {/* Sticky Nav — fades in backdrop on scroll */}
