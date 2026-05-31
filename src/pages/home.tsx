@@ -27,7 +27,6 @@ export default function Home() {
   const handleWhatsApp = (text: string) =>
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 
-  const GOOGLE_FORM_URL = "https://forms.gle/XXXXXXXX";
   const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=dialog";
   const openOrderForm = () => window.open(GOOGLE_FORM_URL, "_blank");
 
