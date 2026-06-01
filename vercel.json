@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pnpm --filter @workspace/royal run build",
+  "outputDirectory": "artifacts/royal/dist",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/royal/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/royal/(.*)", "destination": "/index.html" },
+    { "source": "/royal", "destination": "/index.html" }
+  ]
+}
