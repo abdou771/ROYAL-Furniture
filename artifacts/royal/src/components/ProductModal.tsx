@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ShoppingBag } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Product, translations } from "@/lib/data";
@@ -10,9 +10,10 @@ interface Props {
   product: Product | null;
   onClose: () => void;
   onWhatsApp: (text: string) => void;
+  onOrder: (variantName: string) => void;
 }
 
-export function ProductModal({ product, onClose, onWhatsApp }: Props) {
+export function ProductModal({ product, onClose, onWhatsApp, onOrder }: Props) {
   const { lang } = useLanguage();
   const t = (key: keyof typeof translations) => translations[key][lang];
 
@@ -112,15 +113,24 @@ export function ProductModal({ product, onClose, onWhatsApp }: Props) {
                         {v.desc[lang]}
                       </p>
 
-                      {/* WhatsApp action */}
-                      <Button
-                        onClick={() => onWhatsApp(`${t("modal.inquire")}: ${v.name[lang]} — ${product.name[lang]}`)}
-                        className="w-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 hover:border-[#25D366] rounded-xl gap-2 text-xs transition-all duration-300"
-                        variant="ghost"
-                      >
-                        <SiWhatsapp className="w-3.5 h-3.5" />
-                        {t("modal.inquire")}
-                      </Button>
+                      {/* Two action buttons */}
+                      <div className="flex flex-col gap-2">
+                        <Button
+                          onClick={() => onOrder(v.name[lang])}
+                          className="w-full bg-primary hover:bg-primary/90 text-black font-semibold rounded-xl gap-2 text-sm transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]"
+                        >
+                          <ShoppingBag className="w-4 h-4" />
+                          {lang === "ar" ? "اطلب الآن" : "Commander"}
+                        </Button>
+                        <Button
+                          onClick={() => onWhatsApp(`${t("modal.inquire")}: ${v.name[lang]} — ${product.name[lang]}`)}
+                          className="w-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 hover:border-[#25D366] rounded-xl gap-2 text-xs transition-all duration-300"
+                          variant="ghost"
+                        >
+                          <SiWhatsapp className="w-3.5 h-3.5" />
+                          {t("modal.inquire")}
+                        </Button>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

@@ -47,6 +47,7 @@ export default function Home() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onWhatsApp={handleWhatsApp}
+        onOrder={(variantName) => { setSelectedProduct(null); openOrderForm(variantName); }}
       />
 
       {/* Sticky Nav — fades in backdrop on scroll */}
@@ -242,18 +243,11 @@ export default function Home() {
                     {product.desc[lang]}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-primary/15">
+                  <div className="flex items-center mt-auto pt-5 border-t border-primary/15">
                     <span className="flex items-center gap-1.5 text-primary/70 text-xs font-semibold uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
                       {t("product.view")}
                       <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
                     </span>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); openOrderForm(product.name[lang]); }}
-                      className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-black text-xs font-bold px-4 py-2 rounded-xl shadow-[0_0_14px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] transition-all duration-300 uppercase tracking-wider"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                      {lang === "ar" ? "اطلب الآن" : "Commander"}
-                    </button>
                   </div>
                 </div>
               </motion.div>
