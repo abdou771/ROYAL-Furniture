@@ -2,7 +2,7 @@ import salon1 from "@assets/IMG_20260529_004438_904_1780021117998.jpg";
 import salon2 from "@assets/IMG_20260529_004438_345_1780021117998.jpg";
 import salon3 from "@assets/IMG_20260529_031758_082_1780021117988.jpg";
 import salon4 from "@assets/gemini-2.5-flash-image_Luxury_furniture_showroom_professional__1780021117990.jpg";
-import salonCover from "@assets/IMG_20260601_173952_851_1780332016358.jpg";
+import salonCover from "@assets/gemini-2.5-flash-image_Luxury_furniture_showroom_professional__1780021117990.jpg";
 
 import table1 from "@assets/IMG_20260529_031757_900_1780021117989.jpg";
 import table2 from "@assets/IMG_20260529_031757_993_1780021117989.jpg";
@@ -14,9 +14,9 @@ import bed1 from "@assets/IMG_20260529_031758_370_1780021117987.jpg";
 import bed2 from "@assets/IMG_20260529_031758_562_1780021117986.jpg";
 import bed3 from "@assets/IMG_20260529_031758_664_1780021117986.jpg";
 import bed4 from "@assets/IMG_20260529_031758_810_1780021117985.jpg";
-import bed5 from "@assets/IMG_20260601_013153_176_1780329506076.jpg";
-import bed6 from "@assets/IMG_20260601_013153_051_1780329521139.jpg";
-import bed7 from "@assets/IMG_20260601_013152_634_1780329535151.jpg";
+import bed5 from "@assets/IMG_20260529_031758_370_1780021117987.jpg";
+import bed6 from "@assets/IMG_20260529_031758_562_1780021117986.jpg";
+import bed7 from "@assets/IMG_20260529_031758_664_1780021117986.jpg";
 
 const px = (id: string, w = 700) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;

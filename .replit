@@ -58,6 +58,3 @@ externalPort = 80
 [[ports]]
 localPort = 22052
 externalPort = 3000
-
-[nix]
-packages = ["zip", "nano"]
