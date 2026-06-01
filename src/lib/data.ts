@@ -300,8 +300,7 @@ export const products: Product[] = [
       },
     ],
   },
-];
-
+},
 {
   id: 5,
   name: { ar: "LINA", fr: "LINA" },
