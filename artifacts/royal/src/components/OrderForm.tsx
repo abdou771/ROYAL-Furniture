@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/lib/data";
 import { useLanguage } from "@/hooks/use-language";
 
-const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyk0dAHlFTnaoRIV0oNS_mc_rGrwwanaKacmr63crYbw4BmFE9CwgVu-hNjjEphPiM/exec";
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyDy7rgRxYenEkVuRNb7o89EVb8YHqGzd9NVxf8M7NgwHsqzK4fn4CcAzCIX5yInUxu/exec";
 const WA_NUMBER = "213541465201";
 
 const copy = {
