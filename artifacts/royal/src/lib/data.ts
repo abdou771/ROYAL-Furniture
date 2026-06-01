@@ -242,13 +242,6 @@ export const products: Product[] = [
         image: bed2,
       },
       {
-        id: 53,
-        name: { ar: "معرض غرف النوم — اختر طرازك", fr: "Showroom Chambres — Choisissez votre style" },
-        desc: { ar: "تشكيلة واسعة من غرف النوم الأسود والأبيض في معرضنا بالقليعة", fr: "Large choix de chambres noires et blanches dans notre showroom à El Qlea" },
-        price: "95,000",
-        image: bed3,
-      },
-      {
         id: 54,
         name: { ar: "غرفة CLARA PLUS — جناح فاخر", fr: "Chambre CLARA PLUS — Suite Luxe" },
         desc: { ar: "طقم أبيض بتفاصيل ذهبية أنيقة، خزانة بمرايا سوداء وإضاءة ذهبية", fr: "Ensemble blanc aux détails dorés élégants + armoire miroirs noirs et éclairage doré" },
