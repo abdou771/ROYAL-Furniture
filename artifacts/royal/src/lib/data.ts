@@ -28,7 +28,7 @@ export const translations = {
   "nav.contact": { ar: "تواصل معنا", fr: "Contact" },
   "hero.title": { ar: "البيت الملكي", fr: "Royal Home" },
   "hero.subtitle": {
-    ar: "حيث يلتقي الفخامة بالأصالة في كل تفصيلة من منزلك",
+    ar: "حيث تلتقي الفخامة بالأصالة في كل تفصيلة من منزلك",
     fr: "Où le luxe rencontre l'authenticité dans chaque détail de votre maison",
   },
   "hero.cta": { ar: "استكشف المجموعة", fr: "Découvrir la Collection" },
