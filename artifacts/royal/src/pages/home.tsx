@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useLocation } from "wouter";
 import { useLanguage } from "@/hooks/use-language";
 import { translations, products, Product } from "@/lib/data";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp, SiFacebook } from "react-icons/si";
 import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight, ShoppingBag } from "lucide-react";
-import logoPath from "/IMG_20260529_004439_015_1780015083267.jpg";
+import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
 import { ProductModal } from "@/components/ProductModal";
-import { useRef } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Home() {
   const { lang, toggleLang } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [, navigate] = useLocation();
 
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
@@ -27,8 +28,10 @@ export default function Home() {
   const handleWhatsApp = (text: string) =>
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=dialog";
-  const openOrderForm = () => window.open(GOOGLE_FORM_URL, "_blank");
+  const openOrderForm = (productName?: string) => {
+    const q = productName ? `?product=${encodeURIComponent(productName)}` : "";
+    navigate(`/order${q}`);
+  };
 
   const whyUs = [
     { icon: <Star className="w-7 h-7" />, title: t("whyus.quality.title"), desc: t("whyus.quality.desc") },
@@ -44,7 +47,7 @@ export default function Home() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onWhatsApp={handleWhatsApp}
-        onOrder={() => { setSelectedProduct(null); openOrderForm(); }}
+        onOrder={(variantName) => { setSelectedProduct(null); openOrderForm(variantName); }}
       />
 
       {/* Sticky Nav — fades in backdrop on scroll */}
@@ -162,7 +165,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 300, damping: 18 }}
             >
               <Button
-                onClick={openOrderForm}
+                onClick={() => openOrderForm()}
                 className="bg-primary hover:bg-primary/90 text-black px-10 py-6 text-lg font-serif font-bold tracking-widest rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.45)] hover:shadow-[0_0_55px_rgba(212,175,55,0.65)] transition-all duration-500 gap-2"
               >
                 <ShoppingBag className="w-5 h-5" />
@@ -246,7 +249,7 @@ export default function Home() {
                       <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
                     </span>
                     <button
-                      onClick={(e) => { e.stopPropagation(); openOrderForm(); }}
+                      onClick={(e) => { e.stopPropagation(); openOrderForm(p.name[lang]); }}
                       className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-black text-xs font-bold px-4 py-2 rounded-xl shadow-[0_0_14px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] transition-all duration-300 uppercase tracking-wider"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
