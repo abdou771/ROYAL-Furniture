@@ -248,7 +248,7 @@ export default function Home() {
                       <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
                     </span>
                     <button
-                      onClick={(e) => { e.stopPropagation(); openOrderForm(p.name[lang]); }}
+                      onClick={(e) => { e.stopPropagation(); openOrderForm(product.name[lang]); }}
                       className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-black text-xs font-bold px-4 py-2 rounded-xl shadow-[0_0_14px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] transition-all duration-300 uppercase tracking-wider"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
