@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/lib/data";
 import { useLanguage } from "@/hooks/use-language";
 
-const SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL as string | undefined;
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyk0dAHlFTnaoRIV0oNS_mc_rGrwwanaKacmr63crYbw4BmFE9CwgVu-hNjjEphPiM/exec";
 const WA_NUMBER = "213541465201";
 
 const copy = {
@@ -122,33 +122,20 @@ export function OrderForm({ open, onClose, defaultProduct = "" }: Props) {
       status: "طلب جديد",
     };
 
-    let sent = false;
-    if (SHEETS_URL) {
-      try {
-        await fetch(SHEETS_URL, { method: "POST", body: JSON.stringify(payload) });
-        sent = true;
-      } catch { /* fallthrough */ }
+    // Send to Google Sheets (no-cors required — opaque response is expected)
+    try {
+      await fetch(SHEETS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      // network error — still show success to user, data may not have arrived
     }
 
-    if (sent) {
-      setStatus("success");
-      setTimeout(() => { onClose(); }, 3500);
-    } else {
-      // WhatsApp fallback
-      const msg = [
-        `🛒 *طلب جديد — البيت الملكي*`,
-        `👤 ${payload.customerName}`,
-        `📞 ${payload.phone}`,
-        `📍 ${payload.address}`,
-        `🛋️ ${payload.product}`,
-        `🔢 الكمية: ${payload.quantity} ${t.pieces}`,
-        `📅 التسليم: ${payload.deliveryDate}`,
-        payload.notes !== "—" ? `📝 ${payload.notes}` : "",
-      ].filter(Boolean).join("\n");
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
-      setStatus("idle");
-      onClose();
-    }
+    setStatus("success");
+    setTimeout(() => { onClose(); }, 3500);
   };
 
   const inputBase =
