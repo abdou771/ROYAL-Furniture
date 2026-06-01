@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Send, MapPin, User, Phone, Package, Clock, CheckCircle } from "lucide-react";
+import { ArrowRight, Send, MapPin, User, Phone, Package, CalendarDays, CheckCircle, ChevronLeft, ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/use-language";
 import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
@@ -23,11 +23,9 @@ const copy = {
     product: "المنتج المطلوب",
     productPlaceholder: "اسم المنتج...",
     phone: "رقم الهاتف",
-    deliveryTime: "مدة الاستلام",
-    day: "يوم واحد",
-    week: "أسبوع",
-    month: "شهر",
-    flexible: "حسب التوفر",
+    deliveryTime: "تاريخ الاستلام المفضل",
+    pickDate: "اختر تاريخاً",
+    noDate: "بدون تفضيل",
     submit: "إرسال الطلب",
     submitting: "جاري الإرسال...",
     successTitle: "تم إرسال طلبك!",
@@ -48,11 +46,9 @@ const copy = {
     product: "Produit souhaité",
     productPlaceholder: "Nom du produit...",
     phone: "Numéro de téléphone",
-    deliveryTime: "Délai de livraison",
-    day: "Un jour",
-    week: "Une semaine",
-    month: "Un mois",
-    flexible: "Selon disponibilité",
+    deliveryTime: "Date de livraison souhaitée",
+    pickDate: "Choisir une date",
+    noDate: "Sans préférence",
     submit: "Envoyer la commande",
     submitting: "Envoi en cours...",
     successTitle: "Commande envoyée!",
@@ -151,12 +147,52 @@ export default function OrderPage() {
     "w-full bg-card/50 border border-primary/20 focus:border-primary/60 focus:ring-2 focus:ring-primary/15 rounded-2xl px-4 py-3.5 text-foreground placeholder:text-foreground/25 outline-none transition-all duration-300 text-sm";
   const labelBase = "flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-primary/60 mb-2 font-medium";
 
-  const deliveryOptions = [
-    { value: t.day, key: "day" },
-    { value: t.week, key: "week" },
-    { value: t.month, key: "month" },
-    { value: t.flexible, key: "flexible" },
-  ];
+  // --- Calendar state ---
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const [calView, setCalView] = useState(() => {
+    const d = new Date();
+    return { year: d.getFullYear(), month: d.getMonth() };
+  });
+  const [showCal, setShowCal] = useState(false);
+
+  const arMonths = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+  const frMonths = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+  const months = lang === "ar" ? arMonths : frMonths;
+  const arDays = ["أح","اث","ثل","أر","خم","جم","سب"];
+  const frDays = ["Di","Lu","Ma","Me","Je","Ve","Sa"];
+  const dayLabels = lang === "ar" ? arDays : frDays;
+
+  const firstDayOfMonth = new Date(calView.year, calView.month, 1).getDay();
+  const daysInMonth = new Date(calView.year, calView.month + 1, 0).getDate();
+
+  const prevMonth = () => setCalView(v => {
+    if (v.month === 0) return { year: v.year - 1, month: 11 };
+    return { year: v.year, month: v.month - 1 };
+  });
+  const nextMonth = () => setCalView(v => {
+    if (v.month === 11) return { year: v.year + 1, month: 0 };
+    return { year: v.year, month: v.month + 1 };
+  });
+
+  const selectDate = (day: number) => {
+    const d = new Date(calView.year, calView.month, day);
+    if (d < today) return;
+    const formatted = d.toLocaleDateString(lang === "ar" ? "ar-DZ" : "fr-DZ", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric",
+    });
+    setForm(f => ({ ...f, deliveryTime: formatted }));
+    setShowCal(false);
+  };
+
+  const isPast = (day: number) => new Date(calView.year, calView.month, day) < today;
+  const isSelected = (day: number) => {
+    if (!form.deliveryTime) return false;
+    const d = new Date(calView.year, calView.month, day);
+    return d.toLocaleDateString(lang === "ar" ? "ar-DZ" : "fr-DZ", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric",
+    }) === form.deliveryTime;
+  };
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground" dir={lang === "ar" ? "rtl" : "ltr"}>
@@ -329,28 +365,110 @@ export default function OrderPage() {
                     />
                   </motion.div>
 
-                  {/* Delivery time */}
+                  {/* Delivery date — calendar picker */}
                   <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                     <div className={labelBase}>
-                      <Clock className="w-3 h-3" />
+                      <CalendarDays className="w-3 h-3" />
                       {t.deliveryTime}
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      {deliveryOptions.map(opt => (
-                        <button
-                          key={opt.key}
-                          type="button"
-                          onClick={() => setForm(f => ({ ...f, deliveryTime: f.deliveryTime === opt.value ? "" : opt.value }))}
-                          className={`px-3 py-2.5 rounded-xl border text-xs font-medium transition-all duration-250 ${
-                            form.deliveryTime === opt.value
-                              ? "bg-primary text-black border-primary shadow-[0_0_12px_rgba(212,175,55,0.3)]"
-                              : "border-primary/25 text-foreground/60 hover:border-primary/50 hover:text-primary"
-                          }`}
+
+                    {/* Trigger button */}
+                    <button
+                      type="button"
+                      onClick={() => setShowCal(v => !v)}
+                      className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border transition-all duration-300 text-sm ${
+                        form.deliveryTime
+                          ? "border-primary/60 text-foreground bg-primary/8"
+                          : "border-primary/20 text-foreground/30 bg-card/50 hover:border-primary/40"
+                      }`}
+                    >
+                      <span>{form.deliveryTime || t.pickDate}</span>
+                      <div className="flex items-center gap-2">
+                        {form.deliveryTime && (
+                          <span
+                            role="button"
+                            onClick={e => { e.stopPropagation(); setForm(f => ({ ...f, deliveryTime: "" })); }}
+                            className="text-foreground/30 hover:text-primary text-lg leading-none"
+                          >×</span>
+                        )}
+                        <CalendarDays className="w-4 h-4 text-primary/50" />
+                      </div>
+                    </button>
+
+                    {/* Calendar dropdown */}
+                    <AnimatePresence>
+                      {showCal && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                          transition={{ duration: 0.18 }}
+                          className="mt-2 bg-card border border-primary/20 rounded-2xl p-4 shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
                         >
-                          {opt.value}
-                        </button>
-                      ))}
-                    </div>
+                          {/* Month nav */}
+                          <div className="flex items-center justify-between mb-3">
+                            <button type="button" onClick={prevMonth}
+                              className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-primary/15 text-primary/60 hover:text-primary transition-colors">
+                              {lang === "ar" ? <ChevronRightIcon className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+                            </button>
+                            <span className="text-sm font-semibold text-primary">
+                              {months[calView.month]} {calView.year}
+                            </span>
+                            <button type="button" onClick={nextMonth}
+                              className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-primary/15 text-primary/60 hover:text-primary transition-colors">
+                              {lang === "ar" ? <ChevronLeft className="w-4 h-4" /> : <ChevronRightIcon className="w-4 h-4" />}
+                            </button>
+                          </div>
+
+                          {/* Day headers */}
+                          <div className="grid grid-cols-7 mb-1">
+                            {dayLabels.map(d => (
+                              <div key={d} className="text-center text-[10px] text-primary/40 font-semibold py-1 uppercase tracking-wide">
+                                {d}
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Days grid */}
+                          <div className="grid grid-cols-7 gap-y-1">
+                            {Array.from({ length: firstDayOfMonth }).map((_, i) => (
+                              <div key={`e-${i}`} />
+                            ))}
+                            {Array.from({ length: daysInMonth }).map((_, i) => {
+                              const day = i + 1;
+                              const past = isPast(day);
+                              const sel = isSelected(day);
+                              return (
+                                <button
+                                  key={day}
+                                  type="button"
+                                  disabled={past}
+                                  onClick={() => selectDate(day)}
+                                  className={`h-8 w-full rounded-lg text-xs font-medium transition-all duration-200 ${
+                                    sel
+                                      ? "bg-primary text-black shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                                      : past
+                                        ? "text-foreground/15 cursor-not-allowed"
+                                        : "text-foreground/70 hover:bg-primary/20 hover:text-primary"
+                                  }`}
+                                >
+                                  {day}
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          {/* No preference link */}
+                          <div className="mt-3 pt-3 border-t border-primary/10 text-center">
+                            <button type="button"
+                              onClick={() => { setForm(f => ({ ...f, deliveryTime: "" })); setShowCal(false); }}
+                              className="text-xs text-foreground/35 hover:text-primary transition-colors">
+                              {t.noDate}
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
 
                   {/* Note */}
