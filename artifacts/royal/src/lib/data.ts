@@ -13,6 +13,9 @@ import bed1 from "@assets/IMG_20260529_031758_370_1780021117987.jpg";
 import bed2 from "@assets/IMG_20260529_031758_562_1780021117986.jpg";
 import bed3 from "@assets/IMG_20260529_031758_664_1780021117986.jpg";
 import bed4 from "@assets/IMG_20260529_031758_810_1780021117985.jpg";
+import bed5 from "@assets/IMG_20260601_013153_176_1780329506076.jpg";
+import bed6 from "@assets/IMG_20260601_013153_051_1780329521139.jpg";
+import bed7 from "@assets/IMG_20260601_013152_634_1780329535151.jpg";
 
 const px = (id: string, w = 700) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
@@ -232,17 +235,10 @@ export const products: Product[] = [
     image: bed1,
     variants: [
       {
-        id: 51,
-        name: { ar: "غرفة EVANA — أبيض كريمي", fr: "Chambre EVANA — Blanc Crème" },
-        desc: { ar: "طقم كامل أبيض فاخر مع لوح رأس مبطن بالقماش وخزانة مرايا ذهبية", fr: "Ensemble blanc luxueux, tête de lit en tissu capitonné + armoire miroirs dorés" },
-        price: "120,000",
-        image: bed1,
-      },
-      {
         id: 52,
-        name: { ar: "غرفة أسود لاكيه مع إضاءة", fr: "Chambre Noir Laqué avec LED" },
-        desc: { ar: "غرفة أسود لامع مع مرآة تبرج بإضاءة LED زرقاء وإكسسوارات ذهبية", fr: "Chambre noir brillant + miroir coiffeuse LED bleu + accessoires dorés" },
-        price: "145,000",
+        name: { ar: "غرفة Eyeglass — أسود لاكيه", fr: "Chambre Eyeglass — Noir Laqué" },
+        desc: { ar: "غرفة Eyeglass أسود لامع مع مرآة تبرج بإضاءة LED زرقاء وإكسسوارات ذهبية فاخرة", fr: "Chambre Eyeglass noir brillant + miroir coiffeuse LED bleu + accessoires dorés luxueux" },
+        price: "298,000",
         image: bed2,
       },
       {
@@ -254,10 +250,31 @@ export const products: Product[] = [
       },
       {
         id: 54,
-        name: { ar: "غرفة CLARA PLUS — أبيض ذهبي", fr: "Chambre CLARA PLUS — Blanc Doré" },
+        name: { ar: "غرفة CLARA PLUS — جناح فاخر", fr: "Chambre CLARA PLUS — Suite Luxe" },
         desc: { ar: "طقم أبيض بتفاصيل ذهبية أنيقة، خزانة بمرايا سوداء وإضاءة ذهبية", fr: "Ensemble blanc aux détails dorés élégants + armoire miroirs noirs et éclairage doré" },
-        price: "135,000",
+        price: "189,000",
         image: bed4,
+      },
+      {
+        id: 55,
+        name: { ar: "غرفة DREAM 3 — ممتازة", fr: "Chambre DREAM 3 — Excellence" },
+        desc: { ar: "طقم كلاسيكي أبيض ناصع مع لوح رأس مبطن، مرآة تبرج بإضاءة LED وخزانة أنيقة بثلاثة أبواب", fr: "Ensemble classique blanc nacré, tête de lit capitonnée, coiffeuse LED et armoire 3 portes" },
+        price: "165,000",
+        image: bed5,
+      },
+      {
+        id: 56,
+        name: { ar: "غرفة Cristal — فاخرة", fr: "Chambre Cristal — Luxe" },
+        desc: { ar: "غرفة Cristal بلوح رأس عمودي مضيء وخزانة مرايا واسعة رباعية الأبواب، أناقة عصرية راقية", fr: "Chambre Cristal, tête de lit verticale lumineuse + grande armoire miroirs 4 portes, élégance contemporaine" },
+        price: "189,000",
+        image: bed6,
+      },
+      {
+        id: 57,
+        name: { ar: "غرفة LINA — أبيض بيج حديث", fr: "Chambre LINA — Beige Moderne" },
+        desc: { ar: "غرفة LINA بتصميم عصري مميز، لوح رأس مبطن دائري مع خزانتين بإضاءة برتقالية وديكور أزهار ذهبي", fr: "Chambre LINA au design contemporain, tête de lit arrondie capitonnée + armoires éclairage orange et décor floral doré" },
+        price: "198,000",
+        image: bed7,
       },
     ],
   },

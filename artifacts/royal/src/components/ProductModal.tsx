@@ -74,6 +74,15 @@ export function ProductModal({ product, onClose, onWhatsApp, onOrder }: Props) {
 
             {/* Variants grid */}
             <div className="flex-1 overflow-y-auto px-4 md:px-10 py-8">
+              {/* Bedroom note */}
+              {(product.name.ar === "غرف النوم") && (
+                <div className="max-w-7xl mx-auto mb-6">
+                  <div className="flex items-center gap-3 bg-primary/8 border border-primary/25 rounded-2xl px-5 py-3.5 text-sm text-primary/90 font-medium">
+                    <span className="text-primary text-lg flex-shrink-0">★</span>
+                    <span>{lang === "ar" ? "جميع الأسعار تشمل النقل والتركيب والسومي العادي والبوف" : "Tous les prix incluent livraison, montage, sommier standard et pouf"}</span>
+                  </div>
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
                 {product.variants.map((v, i) => (
                   <motion.div

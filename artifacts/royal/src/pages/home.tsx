@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "fra
 import { Button } from "@/components/ui/button";
 import { SiWhatsapp } from "react-icons/si";
 import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight, ShoppingBag } from "lucide-react";
-import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
+import logoPath from "/IMG_20260529_004439_015_1780015083267.jpg";
 import { ProductModal } from "@/components/ProductModal";
 import { useRef } from "react";
 
@@ -27,7 +27,7 @@ export default function Home() {
   const handleWhatsApp = (text: string) =>
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 
-  const GOOGLE_FORM_URL = "https://forms.gle/XXXXXXXX";
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfMU5I9Qwa_Ouv1UvM-_gPKW30nZJQCW_j1zK73hYLvLdQVRA/viewform?usp=dialog";
   const openOrderForm = () => window.open(GOOGLE_FORM_URL, "_blank");
 
   const whyUs = [
