@@ -13,7 +13,9 @@ import bed1 from "/IMG_20260529_031758_370_1780021117987.jpg";
 import bed2 from "/IMG_20260529_031758_562_1780021117986.jpg";
 import bed3 from "/IMG_20260529_031758_664_1780021117986.jpg";
 import bed4 from "/IMG_20260529_031758_810_1780021117985.jpg";
-
+import lina from "/IMG_20260601_013153_176.jpg";
+import dream from "/IMG_20260601_013153_051.jpg";
+import cristal from "/IMG_20260601_013152_634.jpg";
 const px = (id: string, w = 700) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 
@@ -299,3 +301,84 @@ export const products: Product[] = [
     ],
   },
 ];
+,
+{
+  id: 5,
+  name: { ar: "LINA", fr: "LINA" },
+  desc: { ar: "غرفة نوم عصرية بإضاءة LED", fr: "Chambre moderne avec éclairage LED" },
+  price: "215,000",
+  image: lina,
+  variants: [
+    {
+      id: 1,
+      name: { ar: "LINA", fr: "LINA" },
+      desc: { ar: "غرفة نوم عصرية", fr: "Chambre moderne" },
+      price: "215,000",
+      image: lina
+    }
+  ]
+},
+{
+  id: 6,
+  name: { ar: "DREAM", fr: "DREAM" },
+  desc: { ar: "غرفة نوم كلاسيكية أنيقة", fr: "Chambre classique élégante" },
+  price: "195,000",
+  image: dream,
+  variants: [
+    {
+      id: 1,
+      name: { ar: "DREAM", fr: "DREAM" },
+      desc: { ar: "غرفة نوم كلاسيكية", fr: "Chambre classique" },
+      price: "195,000",
+      image: dream
+    }
+  ]
+},
+{
+  id: 7,
+  name: { ar: "CRISTAL", fr: "CRISTAL" },
+  desc: { ar: "غرفة نوم فاخرة ملكية", fr: "Chambre luxueuse royale" },
+  price: "225,000",
+  image: cristal,
+  variants: [
+    {
+      id: 1,
+      name: { ar: "CRISTAL", fr: "CRISTAL" },
+      desc: { ar: "غرفة نوم فاخرة", fr: "Chambre luxueuse" },
+      price: "225,000",
+      image: cristal
+    }
+  ]
+},
+{
+  id: 8,
+  name: { ar: "CLARA PLUSE", fr: "CLARA PLUSE" },
+  desc: { ar: "غرفة نوم مودرن عصرية", fr: "Chambre moderne contemporaine" },
+  price: "198,000",
+  image: "",
+  variants: [
+    {
+      id: 1,
+      name: { ar: "CLARA PLUSE", fr: "CLARA PLUSE" },
+      desc: { ar: "غرفة نوم مودرن", fr: "Chambre moderne" },
+      price: "198,000",
+      image: ""
+    }
+  ]
+},
+{
+  id: 9,
+  name: { ar: "EVANA", fr: "EVANA" },
+  desc: { ar: "غرفة نوم أنيقة بإضاءة دافئة", fr: "Chambre élégante avec éclairage chaleureux" },
+  price: "198,000",
+  image: "",
+  variants: [
+    {
+      id: 1,
+      name: { ar: "EVANA", fr: "EVANA" },
+      desc: { ar: "غرفة نوم أنيقة", fr: "Chambre élégante" },
+      price: "198,000",
+      image: ""
+    }
+  ]
+}
