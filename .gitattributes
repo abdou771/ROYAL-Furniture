@@ -1,3 +1,1 @@
-dark-portfolio.zip filter=lfs diff=lfs merge=lfs -text
-royal-home.zip filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
