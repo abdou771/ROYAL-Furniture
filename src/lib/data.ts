@@ -379,4 +379,5 @@ export const products: Product[] = [
         image: ""
       }
     ]
-  ];
+  }
+  };
