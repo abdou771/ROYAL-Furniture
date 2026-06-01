@@ -3,7 +3,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { translations, products, Product } from "@/lib/data";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp, SiFacebook } from "react-icons/si";
 import { MapPin, Phone, Star, Shield, Users, Armchair, ChevronRight, ShoppingBag } from "lucide-react";
 import logoPath from "/IMG_20260529_004439_015_1780015083267.jpg";
 import { ProductModal } from "@/components/ProductModal";
@@ -401,6 +401,15 @@ export default function Home() {
           >
             <img src={logoPath} alt="Royal Home Logo" className="h-full w-full object-cover scale-150 grayscale hover:grayscale-0 transition-all duration-500" />
           </motion.div>
+          <a
+            href="https://www.facebook.com/share/1GPQV22TcU/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 mb-5 px-5 py-2.5 rounded-full border border-[#1877F2]/30 text-[#1877F2]/70 hover:text-[#1877F2] hover:border-[#1877F2]/60 hover:bg-[#1877F2]/8 transition-all duration-300 text-sm font-medium"
+          >
+            <SiFacebook className="w-4 h-4" />
+            البيت الملكي
+          </a>
           <p className="text-foreground/40 text-sm font-light">
             © {new Date().getFullYear()} {t("footer.rights")}
           </p>
