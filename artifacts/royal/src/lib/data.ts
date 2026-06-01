@@ -2,6 +2,7 @@ import salon1 from "@assets/IMG_20260529_004438_904_1780021117998.jpg";
 import salon2 from "@assets/IMG_20260529_004438_345_1780021117998.jpg";
 import salon3 from "@assets/IMG_20260529_031758_082_1780021117988.jpg";
 import salon4 from "@assets/gemini-2.5-flash-image_Luxury_furniture_showroom_professional__1780021117990.jpg";
+import salonCover from "@assets/IMG_20260601_173952_851_1780332016358.jpg";
 
 import table1 from "@assets/IMG_20260529_031757_900_1780021117989.jpg";
 import table2 from "@assets/IMG_20260529_031757_993_1780021117989.jpg";
@@ -84,7 +85,7 @@ export const products: Product[] = [
     name: { ar: "الصالونات", fr: "Salons" },
     desc: { ar: "مجموعة متنوعة من الصالونات الفاخرة", fr: "Collection de salons de luxe" },
     price: "65,000",
-    image: salon1,
+    image: salonCover,
     variants: [
       {
         id: 11,
