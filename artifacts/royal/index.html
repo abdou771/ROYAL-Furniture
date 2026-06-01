@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>البيت الملكي | Royal Furniture</title>
     <meta name="description" content="البيت الملكي — متجر الأثاث الجزائري الفاخر" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="البيت الملكي | Royal Furniture" />
-    <meta property="og:description" content="حيث تلتقي الفخامة بالأصالة في كل تفصيلة من منزلك" />
-    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      /* Critical CSS — ensures page is visible even if Tailwind bundle fails to load */
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body {
+        margin: 0; padding: 0;
+        background: hsl(27, 50%, 10%);
+        color: hsl(40, 60%, 92%);
+        font-family: 'Cairo', sans-serif;
+        min-height: 100%;
+      }
+      #root { min-height: 100vh; }
+      :root {
+        --background: 27 50% 10%;
+        --foreground: 40 60% 92%;
+        --primary: 43 85% 52%;
+        --primary-foreground: 0 0% 0%;
+        --border: 43 60% 20%;
+        --muted: 27 40% 15%;
+        --muted-foreground: 40 30% 65%;
+        --radius: 0.5rem;
+      }
+    </style>
     <script>
       window.addEventListener('error', function(e) {
         var el = document.getElementById('root');
         if (el && el.children.length === 0) {
-          el.innerHTML = '<div style="padding:2rem;font-family:monospace;background:#1a0f05;color:#e8d5a3;min-height:100vh"><h2 style="color:#d4a017">خطأ في التحميل</h2><p>' + e.message + '</p><p style="opacity:.6;font-size:.8rem">' + (e.filename||'') + ':' + e.lineno + '</p></div>';
+          el.innerHTML = '<div style="padding:2rem;font-family:monospace;color:#e8d5a3"><h2 style="color:#d4a017">خطأ في التحميل</h2><p>' + e.message + '</p><small>' + (e.filename||'') + ':' + e.lineno + '</small></div>';
         }
       });
       window.addEventListener('unhandledrejection', function(e) {
         var el = document.getElementById('root');
         if (el && el.children.length === 0) {
-          el.innerHTML = '<div style="padding:2rem;font-family:monospace;background:#1a0f05;color:#e8d5a3;min-height:100vh"><h2 style="color:#d4a017">خطأ غير متوقع</h2><p>' + (e.reason && e.reason.message ? e.reason.message : String(e.reason)) + '</p></div>';
+          el.innerHTML = '<div style="padding:2rem;font-family:monospace;color:#e8d5a3"><h2 style="color:#d4a017">خطأ غير متوقع</h2><p>' + (e.reason && e.reason.message ? e.reason.message : String(e.reason)) + '</p></div>';
         }
       });
     </script>
   </head>
-  <body style="margin:0;background:#1a0f05">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
