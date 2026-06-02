@@ -111,15 +111,12 @@ export function OrderForm({ open, onClose, defaultProduct = "" }: Props) {
     setStatus("loading");
 
     const payload = {
-      dateTime: new Date().toLocaleString("ar-DZ"),
-      customerName: `${form.firstName} ${form.lastName}`.trim(),
+      firstName: form.firstName,
+      lastName: form.lastName,
       phone: form.phone,
-      address: form.address || "—",
+      location: form.address || "—",
       product: form.product,
-      quantity: form.quantity,
-      deliveryDate: form.deliveryDate || "—",
-      notes: form.notes || "—",
-      status: "طلب جديد",
+      duration: form.deliveryDate || "—",
     };
 
     // Send to Google Sheets (no-cors required — opaque response is expected)
