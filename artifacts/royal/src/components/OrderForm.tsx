@@ -127,7 +127,7 @@ export function OrderForm({ open, onClose, defaultProduct = "" }: Props) {
       await fetch(SHEETS_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload),
       });
     } catch {
