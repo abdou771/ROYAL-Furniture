@@ -119,16 +119,22 @@ export function OrderForm({ open, onClose, defaultProduct = "" }: Props) {
       duration: form.deliveryDate || "—",
     };
 
-    // Send to Google Sheets (no-cors required — opaque response is expected)
+    // Send to Google Sheets via GET params (most reliable with no-cors)
     try {
-      await fetch(SHEETS_URL, {
-        method: "POST",
+      const params = new URLSearchParams({
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+        phone: payload.phone,
+        location: payload.location,
+        product: payload.product,
+        duration: payload.duration,
+      });
+      await fetch(`${SHEETS_URL}?${params.toString()}`, {
+        method: "GET",
         mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload),
       });
     } catch {
-      // network error — still show success to user, data may not have arrived
+      // network error — still show success to user
     }
 
     setStatus("success");
