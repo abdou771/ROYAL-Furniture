@@ -7,7 +7,7 @@ import { useLanguage } from "@/hooks/use-language";
 import logoPath from "@assets/IMG_20260529_004439_015_1780015083267.jpg";
 
 const SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL as string | undefined;
-const WA_NUMBER = "213541465201";
+const WA_NUMBER = "213549032671";
 const LS_KEY = "royal-customer-info";
 
 const copy = {

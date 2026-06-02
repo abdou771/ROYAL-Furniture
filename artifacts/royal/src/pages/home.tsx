@@ -24,7 +24,7 @@ export default function Home() {
   const navBg = useTransform(scrollY, [0, 80], ["rgba(0,0,0,0)", "rgba(0,0,0,0.35)"]);
 
   const t = (key: keyof typeof translations) => translations[key][lang];
-  const whatsappNumber = "213541465201";
+  const whatsappNumber = "213549032671";
   const handleWhatsApp = (text: string) =>
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
 

@@ -6,7 +6,7 @@ import { products } from "@/lib/data";
 import { useLanguage } from "@/hooks/use-language";
 
 const SHEETS_URL = "https://script.google.com/macros/s/AKfycbylUP3S5gOh5LXdy9U1k9NRywmyYYbRkcJrrQx-SZUxkyMQLvaN8W_nZ44ELhJ2NxZN/exec";
-const WA_NUMBER = "213541465201";
+const WA_NUMBER = "213549032671";
 
 const copy = {
   ar: {
