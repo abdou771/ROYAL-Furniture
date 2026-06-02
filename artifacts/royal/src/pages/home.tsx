@@ -350,7 +350,7 @@ export default function Home() {
           >
             <div className="space-y-8">
               {[
-                { icon: <Phone className="w-6 h-6" />, label: t("contact.phone"), value: "+213 541 465 201", dir: "ltr" as const },
+                { icon: <Phone className="w-6 h-6" />, label: t("contact.phone"), value: "+213 549 032 671", dir: "ltr" as const },
                 { icon: <MapPin className="w-6 h-6" />, label: t("contact.address"), value: t("contact.address.val"), dir: undefined },
               ].map((item, i) => (
                 <motion.div
